@@ -3,27 +3,24 @@ var tom , tomAnimation;
 var cat, catAnimation;
 var garden , gardenImage;
 
-
-
-
-
 function preload() {
     //load the images here
 
- jerryAnimation = loadAnimation("images/jerryTwo.png","images/jerryThree.png");
+    jerryAnimation = loadAnimation("images/jerryTwo.png","images/jerryThree.png");
 
- tomAnimation = loadAnimation("images/tomTwo.png","images/tomThree.png");
+    tomAnimation = loadAnimation("images/tomTwo.png","images/tomThree.png");
 
- catAnimation = loadAnimation("images/tomFour.png");
+    catAnimation = loadAnimation("images/tomFour.png");
 
- mouseAnimation = loadAnimation("images/jerryFour.png");
+    mouseAnimation = loadAnimation("images/jerryFour.png");
 
-gardenImage = loadImage("images/garden.png");
+    gardenImage = loadImage("images/garden.png");
 
 }
 
 function setup(){
     createCanvas(1000,800);
+
     //create tom and jerry sprites here
   garden = createSprite(500,400,10,80);
   garden.scale = 1.2;
@@ -32,7 +29,7 @@ function setup(){
   tom = createSprite(800,600,8,6);
   tom.addAnimation("tomAnimation",tomAnimation);
   tom.scale =0.2;
-  tom.velocityX = -3;
+  //tom.velocityX = -3;
 
 
   jerry = createSprite(100,600,3,2);
@@ -54,7 +51,7 @@ function draw() {
 
     if(tom.x-jerry.x<(tom.width-jerry.width)/2){
         tom.addAnimation("images/tomFour.png",catAnimation);
-        tom.changeAnimation("images/tomFour.png");
+        tom.changeAnimation("images/tomFour.png",tomAnimation);
         tom.velocityX =0;
         jerry.addAnimation("images/jerryFour.png",mouseAnimation);
         jerry.changeAnimation("images/jerryFour.png");
@@ -68,6 +65,7 @@ function draw() {
     function keyPressed(){
         if(keyCode === LEFT_ARROW){
         tom.velocityX=-5;
+       console.log(cat)
         text(mouseX+','+mouseY,10,45);
         }
     }   
